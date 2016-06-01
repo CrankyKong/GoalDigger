@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="NO ONE LOVES YOU"
+        android:text="JESUS LOVES YOU"
         android:id="@+id/textView"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
