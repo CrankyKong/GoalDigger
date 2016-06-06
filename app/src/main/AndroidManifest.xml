@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CharacterPage"></activity>
+        <activity android:name=".summaryPage"></activity>
     </application>
 
 </manifest>
