@@ -15,8 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CharacterPage"></activity>
-        <activity android:name=".summaryPage"></activity>
+        <activity android:name=".CharacterPage" />
+        <activity android:name=".summaryPage" />
+        <activity android:name=".goalPage"></activity>
     </application>
 
 </manifest>
