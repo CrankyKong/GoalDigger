@@ -11,3 +11,5 @@ public class UserCreationPage extends AppCompatActivity {
         setContentView(R.layout.activity_user_creation_page);
     }
 }
+
+
