@@ -11,7 +11,7 @@ public class goalPage extends AppCompatActivity {
         setContentView(R.layout.activity_goal_page);
     }
 }
-
+//update please
 class Goal{
     int start;
     int end;
