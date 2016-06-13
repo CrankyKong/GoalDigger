@@ -30,8 +30,10 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create your Avatar"
+        android:text="@string/create_your_avatar"
         android:id="@+id/avatarCreateButton"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:nestedScrollingEnabled="false"
+        android:onClick="createCharacter" />
 </RelativeLayout>

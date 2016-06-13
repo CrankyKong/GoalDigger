@@ -10,4 +10,12 @@ public class CharacterCreationPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_creation_page);
     }
+
+    void createCharacter(){
+
+        
+
+
+    }
+
 }
