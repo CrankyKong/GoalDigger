@@ -18,6 +18,7 @@
         <activity android:name=".CharacterPage" />
         <activity android:name=".summaryPage" />
         <activity android:name=".goalPage" />
+        <activity android:name=".UserCreationPage"></activity>
         <activity android:name=".CharacterCreationPage"></activity>
     </application>
 
