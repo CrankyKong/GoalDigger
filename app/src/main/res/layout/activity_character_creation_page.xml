@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Avatar Name"
-        android:id="@+id/textView2"
+        android:id="@+id/usernameInput"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp" />
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/avatarName"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/usernameInput"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp" />
 
