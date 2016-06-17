@@ -34,6 +34,5 @@
         android:id="@+id/avatarCreateButton"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:nestedScrollingEnabled="false"
-        android:onClick="createCharacter" />
+        android:nestedScrollingEnabled="false" />
 </RelativeLayout>
