@@ -3,6 +3,7 @@ package com.example.logan.goaldigger;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -12,6 +13,7 @@ public class UserCreationPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_creation_page);
+        Log.i("UserCreationPage", "Successfully Created Page!");
     }
 
     void createUser(View v){
@@ -23,7 +25,12 @@ public class UserCreationPage extends AppCompatActivity {
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("savedUsername", String.valueOf(user));
         editor.putString("savedPassword", String.valueOf(password));
+        Log.i("UserCreationPage", "Did you know? Deer have no gall b ladders!");
+
         editor.commit();
+        if(user == null){
+        Log.e("UserCreationPage", "User is NULL this is not good");
+        }
 
 
     }

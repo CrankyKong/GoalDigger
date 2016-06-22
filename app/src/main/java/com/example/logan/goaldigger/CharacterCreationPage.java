@@ -1,5 +1,6 @@
 package com.example.logan.goaldigger;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class CharacterCreationPage extends AppCompatActivity {
-
+    public static final String PREFS_NAME ="CharacterInfo";
     Button mButton;
     EditText mEdit;
 
@@ -24,6 +25,8 @@ public class CharacterCreationPage extends AppCompatActivity {
                 {
                     public void onClick(View view)
                     {
+                        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                        SharedPreferences.Editor editor = settings.edit();
                         Log.v("EditText", mEdit.getText().toString());
                     }
                 });
