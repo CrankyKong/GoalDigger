@@ -20,7 +20,7 @@ public class database extends SQLiteOpenHelper {
         goalDiggerDB.execSQL("create table avatar " +
                         "(id integer primary key, name text,level integer,experience integer, cap_experience integer, user_id integer, FOREIGN KEY(user_id) REFERENCES user(id))"
         );
-        goalDiggerDB.execSQL("create table goal" + "()");
+        goalDiggerDB.execSQL("create table goal" + "(id integer primary, goal_desc text, rewardExp integer, completed text CHECK ('Y', 'N'), user_id integer, FOREIGN KEY(user_id) REFERENCES user(id) )");
     }
 
     @Override
