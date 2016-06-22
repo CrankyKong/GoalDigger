@@ -9,8 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class database extends SQLiteOpenHelper {
 
-
-
     public database(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -18,7 +16,11 @@ public class database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         SQLiteDatabase goalDiggerDB = SQLiteDatabase.openOrCreateDatabase("goalDigger",null );
-        goalDiggerDB.execSQL("CREATE TABLE USER ");
+        goalDiggerDB.execSQL("create table user" + "()");
+        goalDiggerDB.execSQL("create table avatar " +
+                        "(id integer primary key, name text,level integer,experience integer, cap_experience integer, user_id integer, FOREIGN KEY(user_id) REFERENCES user(id))"
+        );
+        goalDiggerDB.execSQL("create table goal" + "()");
     }
 
     @Override
