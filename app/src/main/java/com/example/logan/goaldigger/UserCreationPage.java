@@ -15,19 +15,23 @@ public class UserCreationPage extends AppCompatActivity {
         setContentView(R.layout.activity_user_creation_page);
         Log.i("UserCreationPage", "Successfully Created Page!");
     }
-
+    private database databaseAccess;
     void createUser(View v){
         EditText user = (EditText)findViewById(R.id.usernameInput);
         EditText password = (EditText)findViewById(R.id.passwordInput);
         EditText cPassword = (EditText)findViewById(R.id.confirmPassword);
 
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("savedUsername", String.valueOf(user));
-        editor.putString("savedPassword", String.valueOf(password));
+        databaseAccess.addUser(user.getText().toString(), password.getText().toString());
+
+        //SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        //SharedPreferences.Editor editor = settings.edit();
+        //editor.putString("savedUsername", String.valueOf(user));
+        //editor.putString("savedPassword", String.valueOf(password));
+
+
         Log.i("UserCreationPage", "Did you know? Deer have no gall b ladders!");
 
-        editor.commit();
+        //editor.commit();
         if(user == null){
         Log.e("UserCreationPage", "User is NULL this is not good");
         }
