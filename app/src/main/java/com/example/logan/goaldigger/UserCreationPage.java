@@ -7,6 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+/**
+ * Activity for User Creation
+ *
+ * @author John Krieger
+ *
+ */
 public class UserCreationPage extends AppCompatActivity {
     public static final String PREFS_NAME ="UserInfo";
     @Override

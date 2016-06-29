@@ -5,8 +5,16 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
+/*
  * Created by John  Krieger on 6/22/2016.
+ */
+/**
+ * Activity for database
+ *
+ * This activity is used to create the database.
+ *
+ * @author John Krieger
+ * @version 1
  */
 public class database extends SQLiteOpenHelper {
 

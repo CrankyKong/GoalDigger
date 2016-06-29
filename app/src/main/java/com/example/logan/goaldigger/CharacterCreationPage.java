@@ -8,6 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Activity for Character Creation
+ *
+ * @author Logan Skidmore
+ *
+ */
 public class CharacterCreationPage extends AppCompatActivity {
     public static final String PREFS_NAME ="CharacterInfo";
     Button mButton;

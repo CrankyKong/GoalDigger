@@ -5,6 +5,14 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity for MainPage
+ *
+ * This is where the magic happens
+ *
+ * @author John Krieger
+ *
+ */
 public class MainPage extends AppCompatActivity {
 
     @Override
