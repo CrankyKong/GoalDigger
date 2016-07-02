@@ -48,6 +48,15 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener{
     }
 
 
+    /**
+     * OnClick
+     *
+     * Look at this beautiful Switch Statement. It tells the butons to do differnet things
+     *
+     * @author Logan Skidmore
+     * @param v
+     *
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()){
