@@ -22,6 +22,8 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener{
     Button avatarButton;
     Button summaryButton;
     Button goalButton;
+    Button accountButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,8 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener{
         summaryButton.setOnClickListener(this);
         goalButton = (Button) findViewById(R.id.Goals);
         goalButton.setOnClickListener(this);
+        accountButton = (Button) findViewById(R.id.Account);
+        accountButton.setOnClickListener(this);
     }
 
     private void avatarButtonClick(){
@@ -47,6 +51,9 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener{
         startActivity(new Intent("android.intent.action.goalPage"));
     }
 
+    private void accountButtonClick(){
+        startActivity(new Intent("android.intent.action.userCreationPage"));
+    }
 
     /**
      * OnClick
@@ -68,6 +75,9 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener{
                     break;
             case  R.id.Goals:
                 goalButtonClick();
+                break;
+            case R.id.Account:
+                accountButtonClick();
                 break;
 
         }
