@@ -15,34 +15,47 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CharacterPage" >
-        <intent-filter>
-            <action android:name="android.intent.action.CharacterPage" />
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
-    </activity>
-        <activity android:name=".summaryPage" >
+        <activity android:name=".CharacterPage">
             <intent-filter>
-                <action android:name="android.intent.action.summaryPage" />
+                <action android:name="android.intent.action.CharacterPage" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".goalPage" >
+        <activity android:name=".summaryPage">
+            <intent-filter>
+                <action android:name="android.intent.action.summaryPage" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".goalPage">
             <intent-filter>
                 <action android:name="android.intent.action.goalPage" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".UserCreationPage">
             <intent-filter>
                 <action android:name="android.intent.action.userCreationPage" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".CharacterCreationPage"><intent-filter>
-            <action android:name="android.intent.action.CharacterCreationPage" />
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
+        <activity android:name=".CharacterCreationPage">
+            <intent-filter>
+                <action android:name="android.intent.action.CharacterCreationPage" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".GoalCreationPage">
+            <intent-filter>
+                <action android:name="android.intent.action.GoalCreationPage" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

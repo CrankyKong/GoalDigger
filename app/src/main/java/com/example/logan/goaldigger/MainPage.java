@@ -58,7 +58,7 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener{
     /**
      * OnClick
      *
-     * Look at this beautiful Switch Statement. It tells the butons to do differnet things
+     * Look at this beautiful Switch Statement. It tells the butons to do different things
      *
      * @author Logan Skidmore
      * @param v
