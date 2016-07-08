@@ -1,5 +1,6 @@
 package com.example.logan.goaldigger;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,8 +15,8 @@ import android.widget.EditText;
  * @author Logan Skidmore
  *
  */
-public class CharacterCreationPage extends AppCompatActivity {
-    public static final String PREFS_NAME ="CharacterInfo";
+public class CharacterCreationPage extends AppCompatActivity implements View.OnClickListener {
+    public static final String PREFS_NAME = "CharacterInfo";
     Button mButton;
     EditText mEdit;
 
@@ -23,20 +24,26 @@ public class CharacterCreationPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_creation_page);
-        mButton = (Button)findViewById(R.id.avatarCreateButton);
-        mEdit   = (EditText)findViewById(R.id.avatarName);
+        mButton = (Button) findViewById(R.id.avatarCreate);
+        mEdit = (EditText) findViewById(R.id.avatarName);
+    }
 
-        mButton.setOnClickListener(
-                new View.OnClickListener()
-                {
-                    public void onClick(View view)
-                    {
-                        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-                        SharedPreferences.Editor editor = settings.edit();
-                        Log.v("EditText", mEdit.getText().toString());
-                    }
-                });
+    private void avatarNameCreate() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        Log.v("EditText", mEdit.getText().toString());
+        System.out.println(mEdit.getText().toString());
+        startActivity(new Intent("android.intent.action.MAIN"));
 
     }
 
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.avatarCreate:
+                avatarNameCreate();
+                break;
+        }
+    }
 }
