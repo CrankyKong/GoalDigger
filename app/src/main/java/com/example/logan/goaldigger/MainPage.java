@@ -83,42 +83,7 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
-    class User{
-        boolean loggedIn = true;
-        List<User> userList = new ArrayList<User>();
-        String userName;
-        String passWord;
-       void logIn(){
 
-
-
-    loggedIn = true;
-
-       }
-
-
-       boolean doesUserExist(User aUser) {
-           for (int i = 0; i < userList.size(); i++) {
-            if(aUser == userList.get(i)) {
-                return true;
-            }
-            else
-                return false;
-           }
-           throw new AssertionError();
-       }
-
-       boolean doesUsernameExist(User aUser){
-           for (int i = 0; i < userList.size(); i++) {
-               if (aUser.userName == userList.get(i).userName) {
-                    return true;
-               }
-               else
-                   return false;
-           }throw new AssertionError();
-       }
-
-    }
 
 
 }

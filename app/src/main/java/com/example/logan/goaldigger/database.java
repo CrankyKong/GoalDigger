@@ -17,9 +17,11 @@ import android.database.sqlite.SQLiteOpenHelper;
  * @version 1
  */
 public class database extends SQLiteOpenHelper {
+   private static final String goalDigger = "goalDigger";
+   private static final int version = 1;
 
-    public database(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public database(Context context) {
+        super(context, goalDigger, null, version);
     }
     SQLiteDatabase goalDiggerDB = SQLiteDatabase.openOrCreateDatabase("goalDigger",null );
     @Override
@@ -33,13 +35,13 @@ public class database extends SQLiteOpenHelper {
 
     }
 
-    void addUser(String userName, String password){
+    void addUser(User user){
 
 
         SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name", userName);
-        contentValues.put("password", password);
+        contentValues.put("name", user.getUsername());
+        contentValues.put("password", user.getPassWord());
         goalDiggerDB.insert("user", null, contentValues);
         goalDiggerDB.close();
 
