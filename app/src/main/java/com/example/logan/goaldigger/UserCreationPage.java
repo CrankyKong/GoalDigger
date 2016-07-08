@@ -27,7 +27,7 @@ public class UserCreationPage extends AppCompatActivity {
         EditText password = (EditText)findViewById(R.id.passwordInput);
         EditText cPassword = (EditText)findViewById(R.id.confirmPassword);
 
-        databaseAccess.addUser(user.getText().toString(), password.getText().toString());
+        //databaseAccess.addUser(user.getText().toString(), password.getText().toString());
 
         //SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         //SharedPreferences.Editor editor = settings.edit();
@@ -35,7 +35,7 @@ public class UserCreationPage extends AppCompatActivity {
         //editor.putString("savedPassword", String.valueOf(password));
 
 
-        Log.i("UserCreationPage", "Did you know? Deer have no gall b ladders!");
+        Log.i("UserCreationPage", "Did you know? Deer have no gall bladders!");
 
         //editor.commit();
         if(user == null){
