@@ -29,6 +29,7 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
     }
 
     private void avatarNameCreate() {
+        //TODO: change to add to database
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         Log.v("EditText", mEdit.getText().toString());

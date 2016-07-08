@@ -9,4 +9,57 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.logan.goaldigger.GoalCreationPage">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Goal Description:"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:text="Enter in goal description..." />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="33dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Difficulty: "
+        android:id="@+id/textView3"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="70dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/Submit"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_marginBottom="107dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/txtRatingValue"
+        android:layout_above="@+id/Submit"
+        android:layout_alignStart="@+id/Submit"
+        android:layout_marginBottom="36dp" />
 </RelativeLayout>
