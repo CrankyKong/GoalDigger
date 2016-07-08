@@ -34,14 +34,14 @@ public class database extends SQLiteOpenHelper {
     }
 
     void addUser(String userName, String password){
-       //goalDiggerDB.execSQL("INSERT INTO goalDigger VALUES('userName   ','Password');");
+
 
         SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", userName);
         contentValues.put("password", password);
-
         goalDiggerDB.insert("user", null, contentValues);
+        goalDiggerDB.close();
 
     }
 
