@@ -1,10 +1,12 @@
 package com.example.logan.goaldigger;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -16,15 +18,16 @@ import java.util.List;
  * @author John Krieger
  *
  */
-public class UserCreationPage extends AppCompatActivity {
+public class UserCreationPage extends AppCompatActivity implements View.OnClickListener {
     public static final String PREFS_NAME = "UserInfo";
-
+    Button submitButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_creation_page);
         Log.i("UserCreationPage", "Successfully Created Page!");
-
+        submitButton = (Button) findViewById(R.id.submit);
+        submitButton.setOnClickListener(this);
     }
 
     void createUser(View v) {
@@ -50,10 +53,19 @@ public class UserCreationPage extends AppCompatActivity {
             Log.e("UserCreationPage", "User is NULL this is not good");
         }
 
-
+        startActivity(new Intent("android.intent.action.MAIN"));
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.submit:
+                createUser(v);
+                break;
+        }
+
+    }
 }
 
 
