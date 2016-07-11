@@ -53,7 +53,7 @@ public class UserCreationPage extends AppCompatActivity implements View.OnClickL
             Log.e("UserCreationPage", "User is NULL this is not good");
         }
 
-        startActivity(new Intent("android.intent.action.MAIN"));
+        startActivity(new Intent("android.intent.action.CharacterCreationPage"));
     }
 
 
