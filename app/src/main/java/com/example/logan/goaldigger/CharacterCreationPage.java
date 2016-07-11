@@ -28,10 +28,15 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
         mEdit = (EditText) findViewById(R.id.avatarName);
     }
 
-    private void avatarNameCreate() {
+    private void avatarNameCreate(View v) {
         //TODO: change to add to database
         //SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         //SharedPreferences.Editor editor = settings.edit();
+        Avatar avatar = new Avatar();
+        avatar.setName(String.valueOf(mEdit));
+        database databaseAccess = new database(this);
+        databaseAccess.addAvatar(avatar);
+
         Log.v("EditText", mEdit.getText().toString());
         System.out.println(mEdit.getText().toString());
         startActivity(new Intent("android.intent.action.MAIN"));
@@ -44,7 +49,7 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.avatarCreate:
-                avatarNameCreate();
+                avatarNameCreate(v);
                 break;
         }
     }

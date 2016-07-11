@@ -31,6 +31,13 @@ public class database extends SQLiteOpenHelper {
    private static final String AVATAR_CEXP = "cap_exp";
    private static final String AVATAR_USERID = "user_id";
    private static final String AVATAR_FK = "FOREIGN KEY(user_id) REFERENCES user(id)";
+   private static final String TABLE_GOAL ="goal";
+   private static final String GOAL_ID = "id";
+   private static final String GOAL_DESC = "goal_desc";
+   private static final String REWARD_EXP = "reward_exp";
+   private static final String COMPLETED = "completed text CHECK ('Y', 'N'),";
+   private static final String GOAL_USERID = "user_id";
+   private static final String GOAL_FK = "FOREIGN KEY(user_id) REFERENCES user(id)";
 
     public database(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -42,16 +49,18 @@ public class database extends SQLiteOpenHelper {
         String CREATE_THEUSER_TABLE = "CREATE TABLE " + TABLE_USER + "(" + USER_ID +
                 " INTEGER PRIMARY KEY, " + USER_NAME + " TEXT," + USER_PASSWORD + " TEXT" + ")";
         db.execSQL(CREATE_THEUSER_TABLE);
+
         String CREATE_AVATAR_TABLE = "CREATE TABLE" + TABLE_AVATAR + "(" + AVATAR_ID +
                 " INTEGER PRIMARY KEY," + AVATAR_NAME + " TEXT," + AVATAR_LEVEL + " INTEGER," +
                 AVATAR_EXP + " INTEGER," + AVATAR_CEXP + " INTEGER," + AVATAR_USERID  + " INTEGER, + " +
-                AVATAR_FK;
+                AVATAR_FK + ")";
         db.execSQL(CREATE_AVATAR_TABLE);
 
-       // db.execSQL("create table avatar " +
-       //                 "(id integer primary key, name text,level integer,experience integer, cap_experience integer, user_id integer, FOREIGN KEY(user_id) REFERENCES user(id))"
-       // );
-       // db.execSQL("create table goal" + "(id integer primary, goal_desc text, rewardExp integer, completed text CHECK ('Y', 'N'), user_id integer, FOREIGN KEY(user_id) REFERENCES user(id) )");
+        String CREATE_GOAL_TABLE = "CREATE TABLE" + TABLE_GOAL + "(" + GOAL_ID +
+                " INTEGER PRIMARY KEY," + GOAL_DESC + " TEXT," + REWARD_EXP +
+                " INTEGER," + COMPLETED + " " + GOAL_USERID + " INTEGER," + GOAL_FK + ")";
+        db.execSQL(CREATE_GOAL_TABLE);
+       // db.execSQL("create table goal" + "(id integer primary key, goal_desc text, rewardExp integer, completed text CHECK ('Y', 'N'), user_id integer, FOREIGN KEY(user_id) REFERENCES user(id) )");
 
     }
 
@@ -67,10 +76,20 @@ public class database extends SQLiteOpenHelper {
 
     }
 
+    void addAvatar(Avatar avatar){
+     SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
+     ContentValues contentValues = new ContentValues();
+     contentValues.put("name", avatar.getName());
+     goalDiggerDB.insert("avatar", null ,contentValues);
+     goalDiggerDB.close();
+
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     db.execSQL("DROP TABLE  IF EXISTS" + TABLE_USER);
-
+        db.execSQL("DROP TABLE  IF EXISTS" + TABLE_AVATAR);
+        db.execSQL("DROP TABLE  IF EXISTS" + TABLE_GOAL);
     onCreate(db);
 
     }

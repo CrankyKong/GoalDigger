@@ -38,9 +38,16 @@ public class UserCreationPage extends AppCompatActivity implements View.OnClickL
         EditText cPassword = (EditText) findViewById(R.id.confirmPassword);
         user.setUserName(String.valueOf(userName));
         user.setPassWord(String.valueOf(password));
-        database databaseAccess = new database(this);
-        databaseAccess.addUser(user);
+       if (password == cPassword) {
+            database databaseAccess = new database(this);
+            databaseAccess.addUser(user);
+        }
+        else {
+           System.out.println("This is bad");
+       }
+
         Log.d("UserCreationPage", "This button works");
+
         //SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         //SharedPreferences.Editor editor = settings.edit();
         //editor.putString("savedUsername", String.valueOf(user));
