@@ -36,6 +36,7 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
         System.out.println(mEdit.getText().toString());
         startActivity(new Intent("android.intent.action.MAIN"));
 
+
     }
 
 

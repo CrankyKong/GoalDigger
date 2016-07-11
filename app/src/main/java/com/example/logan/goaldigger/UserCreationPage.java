@@ -26,6 +26,7 @@ public class UserCreationPage extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_creation_page);
         Log.i("UserCreationPage", "Successfully Created Page!");
+
         submitButton = (Button) findViewById(R.id.submit);
         submitButton.setOnClickListener(this);
     }
