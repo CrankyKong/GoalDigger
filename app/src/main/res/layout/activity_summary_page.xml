@@ -15,7 +15,10 @@
         android:id="@+id/avatarButon"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="66dp" />
+        android:layout_marginTop="66dp"
+        android:layout_toStartOf="@+id/summaryGoalView"
+        android:background="@android:drawable/ic_menu_myplaces"
+        android:layout_above="@+id/summaryGoalView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,6 +61,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/summaryGoalsListview"
         android:layout_below="@+id/summaryGoalView"
-        android:layout_toEndOf="@+id/avatarButon" />
+        android:layout_toEndOf="@+id/avatarButon"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
