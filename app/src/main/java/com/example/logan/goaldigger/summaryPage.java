@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 /**
@@ -14,6 +15,7 @@ import android.widget.TextView;
  */
 public class summaryPage extends AppCompatActivity {
 
+    ListView listView;
     TextView avatarName;
     TextView levelView;
     String dbName;
@@ -33,11 +35,10 @@ public class summaryPage extends AppCompatActivity {
         dbName = "AshKetchum";
         avatarName.setText("Name: " + dbName);
         levelView.setText("Level: " + dblevel);
-        StringBuilder builder = new StringBuilder();
-        String[] arr = {"These","are","some","words"};
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_summary_page, goalArray);
 
-        ExpandableListView listView = (ExpandableListView) findViewById(R.id.summaryGoalsEListview);
-        listView.setAdapter(adapter);
+//        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_summary_page, goalArray);
+//
+//        ListView listView = (ListView) findViewById(R.id.summaryGoalsListview);
+//        listView.setAdapter(adapter);
     }
 }
