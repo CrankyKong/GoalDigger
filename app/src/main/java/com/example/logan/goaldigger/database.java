@@ -80,6 +80,9 @@ public class database extends SQLiteOpenHelper {
      SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
      ContentValues contentValues = new ContentValues();
      contentValues.put("name", avatar.getName());
+     contentValues.put("level", 1);
+     contentValues.put("exp", 0);
+     contentValues.put("cap_exp", 100);
      goalDiggerDB.insert("avatar", null ,contentValues);
      goalDiggerDB.close();
 
