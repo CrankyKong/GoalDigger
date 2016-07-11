@@ -34,7 +34,7 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
         //SharedPreferences.Editor editor = settings.edit();
         Log.v("EditText", mEdit.getText().toString());
         System.out.println(mEdit.getText().toString());
-        startActivity(new Intent("android.intent.action.MAIN"));
+        startActivity(new Intent("android.intent.action.MainPage"));
 
 
     }
