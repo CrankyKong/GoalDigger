@@ -2,6 +2,9 @@ package com.example.logan.goaldigger;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 /**
  * Activity for Character summary
@@ -11,10 +14,30 @@ import android.os.Bundle;
  */
 public class summaryPage extends AppCompatActivity {
 
+    TextView avatarName;
+    TextView levelView;
+    String dbName;
+    String dblevel;
+    String[] goalArray = {"Android","IPhone","WindowsMobile","Blackberry","WebOS","Ubuntu","Windows7","Max OS X"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary_page);
 
+        avatarName = (TextView) findViewById(R.id.avatarNameView);
+        levelView = (TextView) findViewById(R.id.levelView);
+        //TODO: Queury DB for level
+        dblevel = "99";
+        //TODO: Queury DB for name
+        dbName = "AshKetchum";
+        avatarName.setText("Name: " + dbName);
+        levelView.setText("Level: " + dblevel);
+        StringBuilder builder = new StringBuilder();
+        String[] arr = {"These","are","some","words"};
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_summary_page, goalArray);
+
+        ExpandableListView listView = (ExpandableListView) findViewById(R.id.summaryGoalsEListview);
+        listView.setAdapter(adapter);
     }
 }
