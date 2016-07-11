@@ -24,6 +24,13 @@ public class database extends SQLiteOpenHelper {
    private static final String USER_NAME = "name";
    private static final String USER_PASSWORD = "password";
    private static final String TABLE_AVATAR = "avatar";
+   private static final String AVATAR_ID = "id";
+   private static final String AVATAR_NAME = "name";
+   private static final String AVATAR_LEVEL = "level";
+   private static final String AVATAR_EXP = "exp";
+   private static final String AVATAR_CEXP = "cap_exp";
+   private static final String AVATAR_USERID = "user_id";
+   private static final String AVATAR_FK = "FOREIGN KEY(user_id) REFERENCES user(id)";
 
     public database(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -35,8 +42,12 @@ public class database extends SQLiteOpenHelper {
         String CREATE_THEUSER_TABLE = "CREATE TABLE " + TABLE_USER + "(" + USER_ID +
                 " INTEGER PRIMARY KEY, " + USER_NAME + " TEXT," + USER_PASSWORD + " TEXT" + ")";
         db.execSQL(CREATE_THEUSER_TABLE);
+        String CREATE_AVATAR_TABLE = "CREATE TABLE" + TABLE_AVATAR + "(" + AVATAR_ID +
+                " INTEGER PRIMARY KEY," + AVATAR_NAME + " TEXT," + AVATAR_LEVEL + " INTEGER," +
+                AVATAR_EXP + " INTEGER," + AVATAR_CEXP + " INTEGER," + AVATAR_USERID  + " INTEGER, + " +
+                AVATAR_FK;
+        db.execSQL(CREATE_AVATAR_TABLE);
 
-       // db.execSQL("create table user" + "(id interger primary key, name text, password text)");
        // db.execSQL("create table avatar " +
        //                 "(id integer primary key, name text,level integer,experience integer, cap_experience integer, user_id integer, FOREIGN KEY(user_id) REFERENCES user(id))"
        // );
