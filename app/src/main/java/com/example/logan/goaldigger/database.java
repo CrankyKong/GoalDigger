@@ -2,6 +2,7 @@ package com.example.logan.goaldigger;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -86,6 +87,22 @@ public class database extends SQLiteOpenHelper {
      goalDiggerDB.insert("avatar", null ,contentValues);
      goalDiggerDB.close();
 
+    }
+
+    void addGoal(Goal goal){
+        SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("goal_desc", goal.getGoal_desc());
+        goalDiggerDB.insert("goal", null, contentValues);
+        goalDiggerDB.close();
+    }
+
+    public User getUser(){
+
+        SQLiteDatabase goalDiggerDB = this.getReadableDatabase();
+       // Cursor cursor  = goalDiggerDB.query(TABLE_USER, new String[] {USER_ID, })
+       // I am tired I'll get this done tuesday?
+        return getUser();
     }
 
     @Override

@@ -12,6 +12,15 @@ public class User {
     List<User> userList = new ArrayList<User>();
     String userName;
     String passWord;
+    int user_id;
+
+    public Integer getUser_id(){
+        return user_id;
+    }
+
+    public void setUser_id(int user_id){
+        this.user_id = user_id;
+    }
 
     public String getUsername(){
 

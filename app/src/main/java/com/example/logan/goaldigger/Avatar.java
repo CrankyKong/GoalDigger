@@ -6,13 +6,22 @@ package com.example.logan.goaldigger;
 public class Avatar {
 
     String name;
+    int avatar_id;
 
-    void setName(String name){
+    public void setName(String name){
         this.name = name;
     }
 
-    String getName(){
+    public String getName(){
 
         return name;
+    }
+
+    public int getAvatar_id(){
+        return avatar_id;
+    }
+
+    public void setAvatar_id(int avatar_id) {
+        this.avatar_id = avatar_id;
     }
 }
