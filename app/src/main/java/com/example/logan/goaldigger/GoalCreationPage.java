@@ -13,6 +13,7 @@ public class GoalCreationPage extends AppCompatActivity implements View.OnClickL
     RatingBar ratingBar;
     Button submitButton;
     TextView txtRatingValue;
+    Goal newgoal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
