@@ -27,6 +27,7 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_character_creation_page);
         mButton = (Button) findViewById(R.id.avatarCreate);
         mEdit = (EditText) findViewById(R.id.avatarName);
+        mButton.setOnClickListener(this);
     }
 
     void avatarNameCreate(View v) {
