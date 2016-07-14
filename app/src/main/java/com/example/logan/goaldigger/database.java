@@ -123,7 +123,7 @@ public class database extends SQLiteOpenHelper {
                 new String[] {String.valueOf(id) }, null, null, null, null);
         if(cursor != null)
             cursor.moveToFirst();
-        Avatar foundAvatar = new Avatar(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
+        Avatar foundAvatar = new Avatar(Integer.parseInt(cursor.getString(0)), cursor.getString(0), cursor.getString(0));
 
         // It's done?
         return foundAvatar;
