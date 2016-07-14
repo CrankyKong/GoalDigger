@@ -93,16 +93,23 @@ public class database extends SQLiteOpenHelper {
         SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("goal_desc", goal.getGoal_desc());
+        contentValues.put("reward_exp", goal.getDifficulty());
+        contentValues.put("completed", "N");
         goalDiggerDB.insert("goal", null, contentValues);
         goalDiggerDB.close();
     }
 
-    public User getUser(){
+    public User getUser(int id){
 
         SQLiteDatabase goalDiggerDB = this.getReadableDatabase();
-       // Cursor cursor  = goalDiggerDB.query(TABLE_USER, new String[] {USER_ID, })
+        Cursor cursor  = goalDiggerDB.query(TABLE_USER, new String[] {USER_ID, USER_NAME}, USER_ID + "=?",
+                new String[] {String.valueOf(id) }, null, null, null, null);
+        if(cursor != null)
+            cursor.moveToFirst();
+        User foundUser = new User(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
+
        // I am tired I'll get this done tuesday?
-        return getUser();
+        return foundUser;
     }
 
     @Override

@@ -14,6 +14,13 @@ public class User {
     String passWord;
     int user_id;
 
+
+    public User() {
+    }
+    public User(int i, String string, String string1) {
+    }
+
+
     public Integer getUser_id(){
         return user_id;
     }

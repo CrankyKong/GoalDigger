@@ -37,6 +37,8 @@ public class GoalCreationPage extends AppCompatActivity implements View.OnClickL
         //TODO: Takes goal description
         //TODO: Insert Goal description into DB w/ completed= = 'N', exp = rating * 100;
 
+
+
         startActivity(new Intent("android.intent.action.MAIN"));
     }
 
