@@ -26,7 +26,12 @@ public class User {
     }
 
     public void setUser_id(int user_id){
-        this.user_id = user_id;
+
+        if(this.user_id == user_id)
+            this.user_id = user_id + 1;
+        else
+            this.user_id = user_id;
+
     }
 
     public String getUsername(){

@@ -73,6 +73,7 @@ public class database extends SQLiteOpenHelper {
 
         SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put(USER_ID, user.getUser_id());
         contentValues.put("name", user.getUsername());
         contentValues.put("password", user.getPassWord());
         goalDiggerDB.insert("theUser", null, contentValues);
@@ -106,7 +107,7 @@ public class database extends SQLiteOpenHelper {
 
         SQLiteDatabase goalDiggerDB = this.getReadableDatabase();
         Cursor cursor  = goalDiggerDB.query(TABLE_USER, new String[] {USER_ID, USER_NAME}, USER_ID + "=?",
-                new String[] {String.valueOf(id) }, null, null, null, null);
+                new String[] {String.valueOf(id) }, null, null, null);
         if(cursor != null)
             cursor.moveToFirst();
         User foundUser = new User(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));

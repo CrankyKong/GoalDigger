@@ -36,8 +36,9 @@ public class UserCreationPage extends AppCompatActivity implements View.OnClickL
         EditText userName = (EditText) findViewById(R.id.usernameInput);
         EditText password = (EditText) findViewById(R.id.passwordInput);
         EditText cPassword = (EditText) findViewById(R.id.confirmPassword);
-        user.setUserName(String.valueOf(userName));
+        user.setUserName(userName.getText().toString());
         user.setPassWord(String.valueOf(password));
+        user.setUser_id(1);
         database databaseAccess = new database(this);
         databaseAccess.addUser(user);
         Log.d("Wow",user.getUsername());
