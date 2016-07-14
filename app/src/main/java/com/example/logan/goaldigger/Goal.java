@@ -1,9 +1,11 @@
 package com.example.logan.goaldigger;
 
+import java.io.Serializable;
+
 /**
  * Created by John  Krieger on 7/11/2016.
  */
-public class Goal {
+public class Goal implements Serializable {
     int goal_id;
     String goal_desc;
     Boolean complete;

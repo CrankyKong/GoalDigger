@@ -8,6 +8,10 @@ public class Avatar {
     String name;
     int avatar_id;
 
+    public Avatar (){
+        setName("Bob");
+        setAvatar_id(1);
+    }
     public void setName(String name){
         this.name = name;
     }

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 /**
  * Activity for displaying goals
@@ -16,13 +18,27 @@ import android.widget.Button;
 public class goalPage extends AppCompatActivity implements View.OnClickListener {
 
     Button addGoalButton;
-
+    String[] myStringArray={"A","B","C"};
+    Goal goals;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goal_page);
         addGoalButton = (Button) findViewById(R.id.addgoal);
         addGoalButton.setOnClickListener(this);
+        goals = new Goal();
+
+
+        ArrayAdapter<String> myAdapter=new
+                ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                myStringArray);
+
+        ListView myList=
+                (ListView) findViewById(R.id.listView);
+        myList.setAdapter(myAdapter);
+
     }
 
     private void addGoalButtonClick() {
