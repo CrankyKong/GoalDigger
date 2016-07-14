@@ -52,15 +52,15 @@ public class database extends SQLiteOpenHelper {
                 " INTEGER PRIMARY KEY, " + USER_NAME + " TEXT," + USER_PASSWORD + " TEXT" + ")";
         db.execSQL(CREATE_THEUSER_TABLE);
 
-        String CREATE_AVATAR_TABLE = "CREATE TABLE" + TABLE_AVATAR + "(" + AVATAR_ID +
+        String CREATE_AVATAR_TABLE = "CREATE TABLE " + TABLE_AVATAR + "(" + AVATAR_ID +
                 " INTEGER PRIMARY KEY," + AVATAR_NAME + " TEXT," + AVATAR_LEVEL + " INTEGER," +
-                AVATAR_EXP + " INTEGER," + AVATAR_CEXP + " INTEGER," + AVATAR_USERID  + " INTEGER, + " +
+                AVATAR_EXP + " INTEGER," + AVATAR_CEXP + " INTEGER," + AVATAR_USERID  + " INTEGER, " +
                 AVATAR_FK + ")";
         db.execSQL(CREATE_AVATAR_TABLE);
 
-        String CREATE_GOAL_TABLE = "CREATE TABLE" + TABLE_GOAL + "(" + GOAL_ID +
-                " INTEGER PRIMARY KEY," + GOAL_DESC + " TEXT," + REWARD_EXP +
-                " INTEGER," + COMPLETED + " " + GOAL_USERID + " INTEGER," + GOAL_FK + ")";
+        String CREATE_GOAL_TABLE = "CREATE TABLE " + TABLE_GOAL + "(" + GOAL_ID +
+                " INTEGER PRIMARY KEY, " + GOAL_DESC + " TEXT, " + REWARD_EXP +
+                " INTEGER, " + COMPLETED + " " + GOAL_USERID + " INTEGER, " + GOAL_FK + ")";
         db.execSQL(CREATE_GOAL_TABLE);
        // db.execSQL("create table goal" + "(id integer primary key, goal_desc text, rewardExp integer, completed text CHECK ('Y', 'N'), user_id integer, FOREIGN KEY(user_id) REFERENCES user(id) )");
 
@@ -73,7 +73,6 @@ public class database extends SQLiteOpenHelper {
 
         SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(USER_ID, user.getUser_id());
         contentValues.put("name", user.getUsername());
         contentValues.put("password", user.getPassWord());
         goalDiggerDB.insert("theUser", null, contentValues);
@@ -107,7 +106,7 @@ public class database extends SQLiteOpenHelper {
 
         SQLiteDatabase goalDiggerDB = this.getReadableDatabase();
         Cursor cursor  = goalDiggerDB.query(TABLE_USER, new String[] {USER_ID, USER_NAME}, USER_ID + "=?",
-                new String[] {String.valueOf(id) }, null, null, null);
+                new String[] {String.valueOf(id) }, null, null, null, null);
         if(cursor != null)
             cursor.moveToFirst();
         User foundUser = new User(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
