@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * Created by John  Krieger on 6/22/2016.
  */
@@ -36,7 +39,7 @@ public class database extends SQLiteOpenHelper {
    private static final String GOAL_ID = "id";
    private static final String GOAL_DESC = "goal_desc";
    private static final String REWARD_EXP = "reward_exp";
-   private static final String COMPLETED = "completed text CHECK ('Y', 'N'),";
+   private static final String COMPLETED = "completed";
    private static final String GOAL_USERID = "user_id";
    private static final String GOAL_FK = "FOREIGN KEY(user_id) REFERENCES user(id)";
 
@@ -45,24 +48,27 @@ public class database extends SQLiteOpenHelper {
     }
    // SQLiteDatabase goalDiggerDB = SQLiteDatabase.openOrCreateDatabase("goalDigger",null );
 
+    private static final String CREATE_THEUSER_TABLE = "CREATE TABLE " + TABLE_USER + "(" + USER_ID +
+            " INTEGER PRIMARY KEY, " + USER_NAME + " TEXT," + USER_PASSWORD + " TEXT" + ")";
+
+
+    private static final String CREATE_AVATAR_TABLE = "CREATE TABLE " + TABLE_AVATAR + "(" + AVATAR_ID +
+            " INTEGER PRIMARY KEY," + AVATAR_NAME + " TEXT," + AVATAR_LEVEL + " INTEGER," +
+            AVATAR_EXP + " INTEGER," + AVATAR_CEXP + " INTEGER," + AVATAR_USERID  + " INTEGER, " +
+            AVATAR_FK + ")";
+
+
+    private static final String CREATE_GOAL_TABLE = "CREATE TABLE " + TABLE_GOAL + "(" + GOAL_ID +
+            " INTEGER PRIMARY KEY, " + GOAL_DESC + " INTEGER, " + REWARD_EXP +
+            " INTEGER, " + COMPLETED + "TEXT, "+ GOAL_USERID + " INTEGER, " + GOAL_FK + ")";
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String CREATE_THEUSER_TABLE = "CREATE TABLE " + TABLE_USER + "(" + USER_ID +
-                " INTEGER PRIMARY KEY, " + USER_NAME + " TEXT," + USER_PASSWORD + " TEXT" + ")";
         db.execSQL(CREATE_THEUSER_TABLE);
-
-        String CREATE_AVATAR_TABLE = "CREATE TABLE " + TABLE_AVATAR + "(" + AVATAR_ID +
-                " INTEGER PRIMARY KEY," + AVATAR_NAME + " TEXT," + AVATAR_LEVEL + " INTEGER," +
-                AVATAR_EXP + " INTEGER," + AVATAR_CEXP + " INTEGER," + AVATAR_USERID  + " INTEGER, " +
-                AVATAR_FK + ")";
         db.execSQL(CREATE_AVATAR_TABLE);
-
-        String CREATE_GOAL_TABLE = "CREATE TABLE " + TABLE_GOAL + "(" + GOAL_ID +
-                " INTEGER PRIMARY KEY, " + GOAL_DESC + " TEXT, " + REWARD_EXP +
-                " INTEGER, " + COMPLETED + " " + GOAL_USERID + " INTEGER, " + GOAL_FK + ")";
         db.execSQL(CREATE_GOAL_TABLE);
-       // db.execSQL("create table goal" + "(id integer primary key, goal_desc text, rewardExp integer, completed text CHECK ('Y', 'N'), user_id integer, FOREIGN KEY(user_id) REFERENCES user(id) )");
+
 
     }
 
@@ -109,30 +115,53 @@ public class database extends SQLiteOpenHelper {
                 new String[] {String.valueOf(id) }, null, null, null, null);
         if(cursor != null)
             cursor.moveToFirst();
-        User foundUser = new User(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
+        User foundUser = new User(Integer.parseInt(cursor.getString(0)),cursor.getString(0), cursor.getString(0));
 
-       // It's done?
         return foundUser;
     }
 
     public Avatar getAvatar(int id){
 
         SQLiteDatabase goalDiggerDB = this.getReadableDatabase();
-        Cursor cursor  = goalDiggerDB.query(TABLE_AVATAR, new String[] {AVATAR_ID, AVATAR_LEVEL, AVATAR_NAME, AVATAR_EXP ,AVATAR_CEXP, AVATAR_USERID}, AVATAR_ID + "=?",
-                new String[] {String.valueOf(id) }, null, null, null, null);
-        if(cursor != null)
-            cursor.moveToFirst();
-        Avatar foundAvatar = new Avatar(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
 
+        String selectQuery = "SELECT * FROM " + TABLE_AVATAR + " WHERE "
+                + AVATAR_ID + " = " + id;
+
+        Cursor c = goalDiggerDB.rawQuery(selectQuery, null);
+
+        if(c != null)
+            c.moveToFirst();
+        Avatar foundAvatar = new Avatar();
+        foundAvatar.setName(c.getString(c.getColumnIndex(AVATAR_NAME)));
+        foundAvatar.setLevel(c.getInt(c.getColumnIndex(AVATAR_LEVEL)));
         // It's done?
         return foundAvatar;
     }
 
+    public List<Goal> getAllGoals(){
+        List<Goal> goals = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_GOAL;
+        SQLiteDatabase goalDiggerDB = this.getReadableDatabase();
+        Cursor c = goalDiggerDB.rawQuery(selectQuery,null);
+        if(c.moveToFirst()){
+            do{
+                Goal goal = new Goal();
+                goal.setGoal_id(c.getInt(c.getColumnIndex(GOAL_ID)));
+                goal.setGoal_desc(c.getString(c.getColumnIndex(GOAL_DESC)));
+                goal.setComplete(c.getInt(c.getColumnIndex(COMPLETED)));
+                goal.setDifficulty(c.getFloat(c.getColumnIndex(REWARD_EXP)));
+
+                goals.add(goal);
+            }while(c.moveToNext());
+
+        }
+        return goals;
+    }
 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-    db.execSQL("DROP TABLE  IF EXISTS" + TABLE_USER);
+        db.execSQL("DROP TABLE  IF EXISTS" + TABLE_USER);
         db.execSQL("DROP TABLE  IF EXISTS" + TABLE_AVATAR);
         db.execSQL("DROP TABLE  IF EXISTS" + TABLE_GOAL);
     onCreate(db);

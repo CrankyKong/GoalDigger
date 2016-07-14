@@ -7,6 +7,10 @@ public class Avatar {
 
     String name;
     int avatar_id;
+    int level;
+    int exp;
+    int cap_exp;
+
 
     public Avatar (){
         setName("Bob");
@@ -18,6 +22,22 @@ public class Avatar {
 
     public void setName(String name){
         this.name = name;
+    }
+
+    public void setLevel(int level){
+        this.level = level;
+    }
+
+    public int getCap_exp() {
+        return cap_exp;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public String getName(){

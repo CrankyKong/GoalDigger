@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Goal implements Serializable {
     int goal_id;
     String goal_desc;
-    Boolean complete;
+    int complete;
     float difficulty;
 
     public int getGoal_id(){
@@ -17,7 +17,7 @@ public class Goal implements Serializable {
 
     public float getDifficulty() { return difficulty;  }
 
-    public Boolean isComplete() { return complete; }
+    public int isComplete() { return complete; }
 
     public void setGoal_id(int goal_id){
         this.goal_id = goal_id;
@@ -31,7 +31,7 @@ public class Goal implements Serializable {
         this.goal_desc = goal_desc;
     }
 
-    public void setComplete(Boolean complete) { this.complete = complete; }
+    public void setComplete(int complete) { this.complete = complete; }
 
     public void setDifficulty(float difficulty) { this.difficulty = difficulty;  }
 }

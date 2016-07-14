@@ -19,7 +19,7 @@ public class summaryPage extends AppCompatActivity {
     TextView avatarName;
     TextView levelView;
     String dbName;
-    String dblevel;
+    int dblevel;
     String[] goalArray = {"Android","IPhone","WindowsMobile","Blackberry","WebOS","Ubuntu","Windows7","Max OS X"};
 
     @Override
@@ -29,18 +29,18 @@ public class summaryPage extends AppCompatActivity {
 
         Avatar a;
         User u;
+        database DatabaseAccess = new database(this);
 
+        a = DatabaseAccess.getAvatar(3);
         avatarName = (TextView) findViewById(R.id.avatarNameView);
         levelView = (TextView) findViewById(R.id.levelView);
         //TODO: Queury DB for level
 
-        dblevel = "99";
+         dblevel = a.getLevel();
         //TODO: Queury DB for name
-        database DatabaseAccess = new database(this);
 
-        u = DatabaseAccess.getUser(1);
-        if(u != null) {
-            dbName = u.getUsername();
+        if(a != null) {
+            dbName = a.getName();
         }
         else
             dbName = "AshKetchum";
