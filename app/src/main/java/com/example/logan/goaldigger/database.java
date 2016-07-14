@@ -43,7 +43,8 @@ public class database extends SQLiteOpenHelper {
     public database(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-    //SQLiteDatabase goalDiggerDB = SQLiteDatabase.openOrCreateDatabase("goalDigger",null );
+   // SQLiteDatabase goalDiggerDB = SQLiteDatabase.openOrCreateDatabase("goalDigger",null );
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -65,6 +66,8 @@ public class database extends SQLiteOpenHelper {
 
     }
 
+
+
     void addUser(User user){
 
 
@@ -73,7 +76,7 @@ public class database extends SQLiteOpenHelper {
         contentValues.put("name", user.getUsername());
         contentValues.put("password", user.getPassWord());
         goalDiggerDB.insert("theUser", null, contentValues);
-        goalDiggerDB.close();
+        //goalDiggerDB.close();
 
     }
 
@@ -85,7 +88,7 @@ public class database extends SQLiteOpenHelper {
      contentValues.put("exp", 0);
      contentValues.put("cap_exp", 100);
      goalDiggerDB.insert("avatar", null ,contentValues);
-     goalDiggerDB.close();
+     //goalDiggerDB.close();
 
     }
 
@@ -96,7 +99,7 @@ public class database extends SQLiteOpenHelper {
         contentValues.put("reward_exp", goal.getDifficulty());
         contentValues.put("completed", "N");
         goalDiggerDB.insert("goal", null, contentValues);
-        goalDiggerDB.close();
+       // goalDiggerDB.close();
     }
 
     public User getUser(int id){
@@ -108,9 +111,24 @@ public class database extends SQLiteOpenHelper {
             cursor.moveToFirst();
         User foundUser = new User(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
 
-       // I am tired I'll get this done tuesday?
+       // It's done?
         return foundUser;
     }
+
+    public Avatar getAvatar(int id){
+
+        SQLiteDatabase goalDiggerDB = this.getReadableDatabase();
+        Cursor cursor  = goalDiggerDB.query(TABLE_AVATAR, new String[] {AVATAR_ID, AVATAR_LEVEL, AVATAR_NAME, AVATAR_EXP ,AVATAR_CEXP, AVATAR_USERID}, AVATAR_ID + "=?",
+                new String[] {String.valueOf(id) }, null, null, null, null);
+        if(cursor != null)
+            cursor.moveToFirst();
+        Avatar foundAvatar = new Avatar(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
+
+        // It's done?
+        return foundAvatar;
+    }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

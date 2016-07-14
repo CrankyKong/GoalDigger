@@ -12,6 +12,10 @@ public class Avatar {
         setName("Bob");
         setAvatar_id(1);
     }
+
+    public Avatar(int i, String string, String string1) {
+    }
+
     public void setName(String name){
         this.name = name;
     }

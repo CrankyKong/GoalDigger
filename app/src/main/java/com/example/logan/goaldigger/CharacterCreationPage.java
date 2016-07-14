@@ -2,6 +2,7 @@ package com.example.logan.goaldigger;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,14 +29,16 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
         mEdit = (EditText) findViewById(R.id.avatarName);
     }
 
-    private void avatarNameCreate(View v) {
+    void avatarNameCreate(View v) {
         //TODO: change to add to database
         //SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         //SharedPreferences.Editor editor = settings.edit();
         Avatar avatar = new Avatar();
+
         avatar.setName(String.valueOf(mEdit));
         database databaseAccess = new database(this);
         databaseAccess.addAvatar(avatar);
+        Log.d("Inserted into database", avatar.getName());
 
         Log.v("EditText", mEdit.getText().toString());
         System.out.println(mEdit.getText().toString());

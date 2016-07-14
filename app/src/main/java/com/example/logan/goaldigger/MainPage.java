@@ -21,7 +21,7 @@ import java.util.List;
  *
  */
 public class MainPage extends AppCompatActivity implements View.OnClickListener{
-
+    public static database datbaseAccess;
     Button avatarButton;
     Button summaryButton;
     Button goalButton;

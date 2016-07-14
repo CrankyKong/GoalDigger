@@ -38,13 +38,10 @@ public class UserCreationPage extends AppCompatActivity implements View.OnClickL
         EditText cPassword = (EditText) findViewById(R.id.confirmPassword);
         user.setUserName(String.valueOf(userName));
         user.setPassWord(String.valueOf(password));
-       if (password == cPassword) {
-            database databaseAccess = new database(this);
-            databaseAccess.addUser(user);
-        }
-        else {
-           System.out.println("This is bad");
-       }
+        database databaseAccess = new database(this);
+        databaseAccess.addUser(user);
+        Log.d("Wow",user.getUsername());
+
 
         Log.d("UserCreationPage", "This button works");
 

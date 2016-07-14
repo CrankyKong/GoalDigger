@@ -27,12 +27,21 @@ public class summaryPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary_page);
 
+        Avatar a = new Avatar();
+
         avatarName = (TextView) findViewById(R.id.avatarNameView);
         levelView = (TextView) findViewById(R.id.levelView);
         //TODO: Queury DB for level
         dblevel = "99";
         //TODO: Queury DB for name
-        dbName = "AshKetchum";
+        database DatabaseAccess = new database(this);
+        DatabaseAccess.addAvatar(a);
+        a = DatabaseAccess.getAvatar(1);
+        if(a != null) {
+            dbName = a.getName();
+        }
+        else
+            dbName = "AshKetchum";
         avatarName.setText("Name: " + dbName);
         levelView.setText("Level: " + dblevel);
 
