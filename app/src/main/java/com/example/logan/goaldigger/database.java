@@ -42,6 +42,12 @@ public class database extends SQLiteOpenHelper {
    private static final String COMPLETED = "completed";
    private static final String GOAL_USERID = "user_id";
    private static final String GOAL_FK = "FOREIGN KEY(user_id) REFERENCES user(id)";
+   private static final String TABLE_ITEM = "item";
+   private static final String ITEM_ID = "id";
+   private static final String ITEM_NAME = "name";
+    private static final String ITEM_TYPE = "type";
+   private static final String ITEM_AVATAR_ID = "avatar_id";
+    private static final String ITEM_FK = "FOREIGN KEY(avatar_id) REFERENCES avatar(id)";
 
     public database(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -59,8 +65,12 @@ public class database extends SQLiteOpenHelper {
 
 
     private static final String CREATE_GOAL_TABLE = "CREATE TABLE " + TABLE_GOAL + "(" + GOAL_ID +
-            " INTEGER PRIMARY KEY, " + GOAL_DESC + " INTEGER, " + REWARD_EXP +
+            " INTEGER PRIMARY KEY, " + GOAL_DESC + " TEXT, " + REWARD_EXP +
             " INTEGER, " + COMPLETED + "TEXT, "+ GOAL_USERID + " INTEGER, " + GOAL_FK + ")";
+
+    private static final String CREATE_ITEM_TABLE = "CREATE TABLE " + TABLE_ITEM + "(" + ITEM_ID +
+            " INTEGER PRIMARY KEY, " + ITEM_NAME+ " TEXT, " + ITEM_TYPE +
+            " TEXT, " + ITEM_AVATAR_ID +" INTEGER, " + ITEM_FK + ")";
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -68,7 +78,7 @@ public class database extends SQLiteOpenHelper {
         db.execSQL(CREATE_THEUSER_TABLE);
         db.execSQL(CREATE_AVATAR_TABLE);
         db.execSQL(CREATE_GOAL_TABLE);
-
+        db.execSQL(CREATE_ITEM_TABLE);
 
     }
 
