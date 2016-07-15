@@ -43,7 +43,10 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
 
         Log.v("EditText", mEdit.getText().toString());
         System.out.println(mEdit.getText().toString());
-        startActivity(new Intent("android.intent.action.summaryPage"));
+
+
+        //TODO uncomment this after testing
+        startActivity(new Intent("android.intent.action.MainPage"));
 
 
     }
