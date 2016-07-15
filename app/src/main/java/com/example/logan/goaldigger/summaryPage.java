@@ -31,7 +31,7 @@ public class summaryPage extends AppCompatActivity {
         User u;
         database DatabaseAccess = new database(this);
 
-        a = DatabaseAccess.getAvatar(3);
+        a = DatabaseAccess.getAvatar(1);
         avatarName = (TextView) findViewById(R.id.avatarNameView);
         levelView = (TextView) findViewById(R.id.levelView);
         //TODO: Queury DB for level
