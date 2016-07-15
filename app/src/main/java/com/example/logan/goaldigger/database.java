@@ -80,6 +80,8 @@ public class database extends SQLiteOpenHelper {
         db.execSQL(CREATE_GOAL_TABLE);
         db.execSQL(CREATE_ITEM_TABLE);
 
+
+
     }
 
 
@@ -99,7 +101,7 @@ public class database extends SQLiteOpenHelper {
     void addAvatar(Avatar avatar){
      SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
      ContentValues contentValues = new ContentValues();
-     contentValues.put("name", avatar.getName());
+     contentValues.put("name", "KanyeWest");
      contentValues.put("level", 1);
      contentValues.put("exp", 0);
      contentValues.put("cap_exp", 100);
@@ -156,6 +158,7 @@ public class database extends SQLiteOpenHelper {
         contentValues.put(AVATAR_ID, 1);
         contentValues.put(AVATAR_EXP, avatar.getExp());
         contentValues.put(AVATAR_CEXP, avatar.getCap_exp());
+        contentValues.put(AVATAR_LEVEL, avatar.getLevel());
 
         return goalDiggerDB.update(TABLE_AVATAR, contentValues, AVATAR_ID + " =?",
                 new String[] {String.valueOf(1)});
