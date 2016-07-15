@@ -154,6 +154,8 @@ public class database extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(AVATAR_NAME, avatar.getName());
         contentValues.put(AVATAR_ID, 1);
+        contentValues.put(AVATAR_EXP, avatar.getExp());
+        contentValues.put(AVATAR_CEXP, avatar.getCap_exp());
 
         return goalDiggerDB.update(TABLE_AVATAR, contentValues, AVATAR_ID + " =?",
                 new String[] {String.valueOf(1)});
