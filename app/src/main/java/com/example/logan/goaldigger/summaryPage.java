@@ -22,7 +22,6 @@ public class summaryPage extends AppCompatActivity {
     TextView levelView;
     String dbName;
     int dblevel;
-    String[] goalArray = {"Android","IPhone","WindowsMobile","Blackberry","WebOS","Ubuntu","Windows7","Max OS X"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +49,9 @@ public class summaryPage extends AppCompatActivity {
         }
         else
             dbName = "AshKetchum";
+
         avatarName.setText("Name: " + dbName);
         levelView.setText("Level: " + dblevel);
 
-//        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_summary_page, goalArray);
-//
-//        ListView listView = (ListView) findViewById(R.id.summaryGoalsListview);
-//        listView.setAdapter(adapter);
     }
 }

@@ -36,6 +36,7 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
         Avatar avatar = new Avatar();
 
         avatar.setName(mEdit.getText().toString());
+        avatar.setCap_exp(200);
         database databaseAccess = new database(this);
         databaseAccess.updateAvatar(avatar);
 

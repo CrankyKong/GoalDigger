@@ -3,6 +3,7 @@ package com.example.logan.goaldigger;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -30,16 +31,22 @@ public class goalPage extends AppCompatActivity implements View.OnClickListener 
     Button addGoalButton;
     Button homeButton;
     Goal goals;
+    Avatar a;
+    database DatabaseAccess;
     private ArrayList<String> items;
     private ArrayAdapter<String> itemsAdapter;
     private ListView lvItems;
     private PopupWindow pop;
     private LayoutInflater layoutInflater;
     private RelativeLayout relativeLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goal_page);
+        a = new Avatar();
+        DatabaseAccess = new database(this);
+        a = DatabaseAccess.getAvatar(1);
         relativeLayout = (RelativeLayout) findViewById(R.id.relative);
         lvItems = (ListView) findViewById(R.id.listView);
         items = new ArrayList<String>();
@@ -101,6 +108,21 @@ public class goalPage extends AppCompatActivity implements View.OnClickListener 
                             }
                         });
 
+                        Log.d("before", "Level: " + a.getLevel());
+                        Log.d("before", "Level: " + a.getCap_exp());
+                        //add the exp to the avatar
+                        int exp = a.getExp();
+                        exp+= 100;
+                        int capexp = a.getCap_exp();
+                        if(exp >= capexp) {
+                            exp = exp % capexp;
+                            a.setCap_exp(capexp + 50);
+                            a.setLevel(a.getLevel() + 1);
+                            Log.d("after", "Level: " + a.getLevel());
+                            Log.d("after", "Level: " + a.getCap_exp());
+                        }
+                        a.setExp(exp);
+                        DatabaseAccess.updateAvatar(a);
 
                         return true;
                     }

@@ -15,6 +15,7 @@ public class Avatar {
     public Avatar() {
         setName("Bob");
         setAvatar_id(1);
+        setCap_exp(200);
     }
 
     public Avatar(int i, String string, String string1) {
@@ -52,6 +53,12 @@ public class Avatar {
     public void setAvatar_id(int avatar_id) {
         this.avatar_id = avatar_id;
     }
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
 
+    public void setCap_exp(int cap_exp) {
+        this.cap_exp = cap_exp;
+    }
 
 }
