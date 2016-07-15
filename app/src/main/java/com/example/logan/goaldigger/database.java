@@ -148,6 +148,19 @@ public class database extends SQLiteOpenHelper {
         return foundAvatar;
     }
 
+    public int updateAvatar(Avatar avatar){
+        SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(AVATAR_NAME, avatar.getName());
+        contentValues.put(AVATAR_ID, 1);
+
+        return goalDiggerDB.update(TABLE_AVATAR, contentValues, AVATAR_ID + " =?",
+                new String[] {String.valueOf(1)});
+
+
+    }
+
     public List<Goal> getAllGoals(){
         List<Goal> goals = new ArrayList<>();
         String selectQuery = "SELECT * FROM " + TABLE_GOAL;

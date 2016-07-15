@@ -12,7 +12,7 @@ public class Avatar {
     int cap_exp;
 
 
-    public Avatar (){
+    public Avatar() {
         setName("Bob");
         setAvatar_id(1);
     }
@@ -20,11 +20,11 @@ public class Avatar {
     public Avatar(int i, String string, String string1) {
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setLevel(int level){
+    public void setLevel(int level) {
         this.level = level;
     }
 
@@ -40,16 +40,18 @@ public class Avatar {
         return level;
     }
 
-    public String getName(){
+    public String getName() {
 
         return name;
     }
 
-    public int getAvatar_id(){
+    public int getAvatar_id() {
         return avatar_id;
     }
 
     public void setAvatar_id(int avatar_id) {
         this.avatar_id = avatar_id;
     }
+
+
 }

@@ -1,5 +1,7 @@
 package com.example.logan.goaldigger;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -30,6 +32,10 @@ public class summaryPage extends AppCompatActivity {
         Avatar a;
         User u;
         database DatabaseAccess = new database(this);
+
+        SharedPreferences prefs = getPreferences((MODE_PRIVATE));
+
+        String storedPrefences = prefs.getString("Yo",null);
 
         a = DatabaseAccess.getAvatar(1);
         avatarName = (TextView) findViewById(R.id.avatarNameView);

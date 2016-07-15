@@ -32,17 +32,18 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
 
     void avatarNameCreate(View v) {
         //TODO: change to add to database
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        SharedPreferences.Editor editor = settings.edit();
+
         Avatar avatar = new Avatar();
 
         avatar.setName(mEdit.getText().toString());
         database databaseAccess = new database(this);
-        databaseAccess.addAvatar(avatar);
+        databaseAccess.updateAvatar(avatar);
+
         Log.d("Inserted into database", avatar.getName());
 
         Log.v("EditText", mEdit.getText().toString());
         System.out.println(mEdit.getText().toString());
+
 
 
         //TODO uncomment this after testing
