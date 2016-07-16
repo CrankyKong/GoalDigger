@@ -8,6 +8,7 @@ import android.os.Bundle;
  * Activity for Character Display
  *
  * @author John Krieger
+ * @deprecated this page wasn't used but we kept it like whales kept their leg bones fomr when they evolved from wolves
  *
  */
 public class CharacterPage extends AppCompatActivity {

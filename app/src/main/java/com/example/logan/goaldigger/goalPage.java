@@ -22,10 +22,11 @@ import java.util.ArrayList;
 /**
  * Activity for displaying goals
  *
+ * This is where you add and complete goals to earn exp
+ *
  * @author Logan Skidmore
  *
  */
-
 public class goalPage extends AppCompatActivity implements View.OnClickListener {
 
     Button addGoalButton;
@@ -64,18 +65,19 @@ public class goalPage extends AppCompatActivity implements View.OnClickListener 
         homeButton.setOnClickListener(this);
 
         goals = new Goal();
-
-
-
-
-       // ListView myList=
-        //        (ListView) findViewById(R.id.listView);
-        //myList.setAdapter(myAdapter);
-
         setupListViewListener();
-
     }
 
+
+    /**
+     * addItem Function
+     *When you press the button it takes the text from edit text and makes it a goal
+     *
+     * @param v the view
+     *
+     * @author Logan Skidmore
+     *
+     */
     public void onAddItem(View v) {
         EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
         String itemText = etNewItem.getText().toString();
@@ -94,7 +96,6 @@ public class goalPage extends AppCompatActivity implements View.OnClickListener 
                         items.remove(pos);
                         // Refresh the adapter
                         itemsAdapter.notifyDataSetChanged();
-                        // Return true consumes the long click event (marks it handled)
                         layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                         ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.popexp,null);
                         pop = new PopupWindow(container, 450 ,125, true);
@@ -131,35 +132,28 @@ public class goalPage extends AppCompatActivity implements View.OnClickListener 
     }
 
 
-    private void addGoalButtonClick() {
-        startActivity(new Intent("android.intent.action.GoalCreationPage"));
-    }
+
 
     private void goHome() {
         startActivity(new Intent("android.intent.action.MainPage"));
     }
 
 
+    /**
+     * Onclick
+     *
+     * switch statements for buttons but we ended up only haven the home button
+     *
+     * @param v ET phone home
+     * @author Logan Skidmore
+     *
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.addgoal:
-                addGoalButtonClick();
-                break;
             case R.id.home:
                 goHome();
                 break;
         }
     }
 }
-//update again please
-//class Goal{
-//    int start;
-//    int end;
-//    String description;
-//    void testDates(){
-//        if(start > end){
-//            throw new AssertionError("The end date is before start date");
-//        }
-//    }
-//}

@@ -11,8 +11,9 @@ import android.widget.TextView;
 
 /**
  * Activity for Character summary
+ * Querys the DB
  *
- * @author Logan Skidmore
+ * @author Logan Skidmore & John Krieger
  *
  */
 public class summaryPage extends AppCompatActivity {
@@ -39,11 +40,10 @@ public class summaryPage extends AppCompatActivity {
         a = DatabaseAccess.getAvatar(1);
         avatarName = (TextView) findViewById(R.id.avatarNameView);
         levelView = (TextView) findViewById(R.id.levelView);
-        //TODO: Queury DB for level
-
+        //Queury DB for level
          dblevel = a.getLevel();
-        //TODO: Queury DB for name
 
+        //Queury DB for name
         if(a != null) {
             dbName = a.getName();
         }

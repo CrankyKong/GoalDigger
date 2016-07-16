@@ -10,6 +10,13 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+/**
+ * How we were gonna handle goal creation but didnt.
+ *
+ * @author Logan Skidmore
+ * @deprecated the whole page. it's dead to us
+ *
+ */
 public class GoalCreationPage extends AppCompatActivity implements View.OnClickListener{
 
     RatingBar ratingBar;
@@ -41,9 +48,6 @@ public class GoalCreationPage extends AppCompatActivity implements View.OnClickL
     }
 
     private void submitButtonClick(){
-        //TODO: Takes goal description
-        //TODO: Insert Goal description into DB w/ completed= = 'N', exp = rating * 100;
-
         newgoal.setGoal_desc("hello");
 
         Intent i = new Intent("android.intent.action.goalPage");

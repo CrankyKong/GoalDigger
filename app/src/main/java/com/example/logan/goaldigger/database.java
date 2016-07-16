@@ -72,6 +72,13 @@ public class database extends SQLiteOpenHelper {
             " INTEGER PRIMARY KEY, " + ITEM_NAME+ " TEXT, " + ITEM_TYPE +
             " TEXT, " + ITEM_AVATAR_ID +" INTEGER, " + ITEM_FK + ")";
 
+    /**
+     * creates the tables
+     *
+     * @author John Kriger
+     * @param db the database
+     *
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -79,16 +86,17 @@ public class database extends SQLiteOpenHelper {
         db.execSQL(CREATE_AVATAR_TABLE);
         db.execSQL(CREATE_GOAL_TABLE);
         db.execSQL(CREATE_ITEM_TABLE);
-
-
-
     }
 
 
-
+    /**
+     * take a user, add a user
+     *
+     * @author John Kriger
+     * @param user The User object put into the db
+     *
+     */
     void addUser(User user){
-
-
         SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", user.getUsername());
@@ -98,6 +106,13 @@ public class database extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * take a avatar, add a avatar
+     *
+     * @author John Kriger
+     * @param avatar The avatar object put into the db
+     *
+     */
     void addAvatar(Avatar avatar){
      SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
      ContentValues contentValues = new ContentValues();
@@ -106,10 +121,15 @@ public class database extends SQLiteOpenHelper {
      contentValues.put("exp", 0);
      contentValues.put("cap_exp", 100);
      goalDiggerDB.insert("avatar", null ,contentValues);
-     //goalDiggerDB.close();
-
     }
 
+    /**
+     * take a goal, add a goal
+     *
+     * @author John Kriger
+     * @param goal The goal object put into the db
+     *
+     */
     void addGoal(Goal goal){
         SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -117,11 +137,17 @@ public class database extends SQLiteOpenHelper {
         contentValues.put("reward_exp", goal.getDifficulty());
         contentValues.put("completed", "N");
         goalDiggerDB.insert("goal", null, contentValues);
-       // goalDiggerDB.close();
     }
 
+    /**
+     * query db for the user
+     *
+     * @author John Kriger
+     * @param id user_id that the db uses to find the right user
+     * @return foundUser user object from DB
+     *
+     */
     public User getUser(int id){
-
         SQLiteDatabase goalDiggerDB = this.getReadableDatabase();
         Cursor cursor  = goalDiggerDB.query(TABLE_USER, new String[] {USER_ID, USER_NAME}, USER_ID + "=?",
                 new String[] {String.valueOf(id) }, null, null, null, null);
@@ -132,6 +158,14 @@ public class database extends SQLiteOpenHelper {
         return foundUser;
     }
 
+    /**
+     * query db for an Avatar
+     *
+     * @author John Kriger
+     * @param id id of the avatar
+     * @return Avatar object
+     *
+     */
     public Avatar getAvatar(int id){
 
         SQLiteDatabase goalDiggerDB = this.getReadableDatabase();
@@ -150,6 +184,13 @@ public class database extends SQLiteOpenHelper {
         return foundAvatar;
     }
 
+    /**
+     * executes an update on the db
+     *
+     * @author John Kriger
+     * @param avatar object to change on the db
+     * @return int
+     */
     public int updateAvatar(Avatar avatar){
         SQLiteDatabase goalDiggerDB = this.getWritableDatabase();
 
@@ -162,10 +203,14 @@ public class database extends SQLiteOpenHelper {
 
         return goalDiggerDB.update(TABLE_AVATAR, contentValues, AVATAR_ID + " =?",
                 new String[] {String.valueOf(1)});
-
-
     }
 
+    /**
+     * query db for all Goals
+     *
+     * @author John Kriger
+     * @return a list of all goals in db
+     */
     public List<Goal> getAllGoals(){
         List<Goal> goals = new ArrayList<>();
         String selectQuery = "SELECT * FROM " + TABLE_GOAL;
@@ -186,7 +231,16 @@ public class database extends SQLiteOpenHelper {
         return goals;
     }
 
-
+    /**
+     * drops old tables
+     *
+     * @author John Kriger
+     * @param db
+     * @param newVersion
+     * @param oldVersion
+     *
+     *
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE  IF EXISTS" + TABLE_USER);

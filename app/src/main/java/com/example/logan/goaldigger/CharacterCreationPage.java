@@ -30,9 +30,14 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
         mButton.setOnClickListener(this);
     }
 
+    /**
+     * Takes the user input creates and avatar and adds it to SQLite
+     *
+     *
+     * @author John Krieger
+     *
+     */
     void avatarNameCreate(View v) {
-        //TODO: change to add to database
-
         Avatar avatar = new Avatar();
 
         avatar.setName(mEdit.getText().toString());
@@ -48,11 +53,14 @@ public class CharacterCreationPage extends AppCompatActivity implements View.OnC
 
 
         startActivity(new Intent("android.intent.action.MainPage"));
-
-
     }
 
-
+    /**
+     * switch for buttons
+     *
+     * @author Logan Skidmore
+     *
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

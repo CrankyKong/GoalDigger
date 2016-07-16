@@ -31,6 +31,12 @@ public class UserCreationPage extends AppCompatActivity implements View.OnClickL
         submitButton.setOnClickListener(this);
     }
 
+    /**
+     * creates the user
+     * Takes the user and the password
+     * @author John Krieger
+     *
+     */
     void createUser(View v) {
         User user = new User();
         EditText userName = (EditText) findViewById(R.id.usernameInput);
@@ -45,16 +51,8 @@ public class UserCreationPage extends AppCompatActivity implements View.OnClickL
 
 
         Log.d("UserCreationPage", "This button works");
-
-        //SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        //SharedPreferences.Editor editor = settings.edit();
-        //editor.putString("savedUsername", String.valueOf(user));
-        //editor.putString("savedPassword", String.valueOf(password));
-
-
         Log.i("UserCreationPage", "Did you know? Deer have no gall bladders!");
 
-        //editor.commit();
         if (user == null) {
             Log.e("UserCreationPage", "User is NULL this is not good");
         }
@@ -62,7 +60,12 @@ public class UserCreationPage extends AppCompatActivity implements View.OnClickL
         startActivity(new Intent("android.intent.action.CharacterCreationPage"));
     }
 
-
+    /**
+     * switch for buttons
+     *
+     * @author Logan Skidmore
+     *
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
