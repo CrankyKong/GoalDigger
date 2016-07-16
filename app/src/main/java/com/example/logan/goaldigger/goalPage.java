@@ -92,9 +92,7 @@ public class goalPage extends AppCompatActivity implements View.OnClickListener 
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapter,
                                                    View item, int pos, long id) {
-                        // Remove the item within array at position
                         items.remove(pos);
-                        // Refresh the adapter
                         itemsAdapter.notifyDataSetChanged();
                         layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                         ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.popexp,null);
